@@ -9,6 +9,7 @@ import java.util.Date;
  * Created by Elrol on 2017/9/8.
  */
 public class Court {
+    private int id;
     private String courtName;
     private String userId;
     private Date startDate;
@@ -20,13 +21,22 @@ public class Court {
 
     }
 
-    public Court(String courtName, String userId, Date startDate, Date endDate, float cost, float penalty) {
+    public Court(int id,String courtName, String userId, Date startDate, Date endDate, float cost, float penalty) {
+        this.id=id;
         this.courtName = courtName;
         this.userId = userId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.cost = cost;
         this.penalty = penalty;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCourtName() {

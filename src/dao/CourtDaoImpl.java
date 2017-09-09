@@ -13,7 +13,7 @@ public class CourtDaoImpl {
     private QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
 
 
-    public List<Court> getAllCourt(String courtName) {
+    public List<Court> getCourtByName(String courtName) {
         List<Court> courts = null;
         String sql = "SELECT * FROM court where courtName=?";
         Object[] params = {courtName};
@@ -25,6 +25,29 @@ public class CourtDaoImpl {
         return courts;
 
     }
+
+    public void addCourt(Court court) {
+        String sql = "INSERT INTO court VALUES(?,?,?,?,?,?,?)";
+        Object[] params = {null,court.getCourtName(),court.getUserId(),court.getStartDate(),court.getEndDate(),court.getCost(),0};
+        try {
+            qr.update(sql, params);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void updateCourt(Court court){
+        String sql="UPDATE court set penalty=?,cost=0 where userId=? and startDate=? and endDate=? and courtName=?";
+        Object[] params={court.getPenalty(),court.getUserId(),court.getStartDate(),court.getEndDate(),court.getCourtName()};
+        try {
+            qr.update(sql,params);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 
 }
