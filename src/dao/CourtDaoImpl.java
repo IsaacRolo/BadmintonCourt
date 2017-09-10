@@ -2,6 +2,7 @@ package dao;
 
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import pojo.Court;
 import utils.JdbcUtils;
@@ -15,7 +16,7 @@ public class CourtDaoImpl {
 
     public List<Court> getCourtByName(String courtName) {
         List<Court> courts = null;
-        String sql = "SELECT * FROM court where courtName=?";
+        String sql = "SELECT * FROM court where courtName=? order by startDate asc";
         Object[] params = {courtName};
         try {
             courts=qr.query(sql, params,new BeanListHandler<>(Court.class));
@@ -48,6 +49,13 @@ public class CourtDaoImpl {
     }
 
 
-
-
+    public Court getCertainCourt(Court court) {
+        String sql="select * from court where userId=? and startDate=? and endDate=? and courtName=?";
+        Object[] params={court.getUserId(),court.getStartDate(),court.getEndDate(),court.getCourtName()};
+        try {
+            return qr.query(sql,params, new BeanHandler<>(Court.class));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

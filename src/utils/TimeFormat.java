@@ -53,12 +53,12 @@ public class TimeFormat {
 		return null;
 	}
 
-	public static String getWeek(Date date){
+	public static int getWeek(Date date){
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE");
 		String week = sdf.format(date);
 		if (!(week.equals("星期六")||week.equals("星期日"))){
-			return "1";
+			return 1;
 		}
-		return "0";
+		return 0;
 	}
 }

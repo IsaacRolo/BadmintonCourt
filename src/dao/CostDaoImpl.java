@@ -13,21 +13,18 @@ public class CostDaoImpl {
     private QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
 
 
-    public List<Cost> getCostByWeek(String isWeekDay) {
+    public List<Cost> getCostByWeek(int isWeekDay) {
         List<Cost> costs = null;
         String sql = "SELECT * FROM cost where isWeekDay=?";
         Object[] params = {isWeekDay};
         try {
-            costs=qr.query(sql, params,new BeanListHandler<>(Cost.class));
+            costs = qr.query(sql, params, new BeanListHandler<>(Cost.class));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return costs;
 
     }
-
-
-
 
 
 }
