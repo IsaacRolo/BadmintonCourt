@@ -5,9 +5,7 @@ import utils.TimeFormat;
 
 import java.util.Date;
 
-/**
- * Created by Elrol on 2017/9/8.
- */
+
 public class Court {
     private int id;
     private String courtName;
@@ -17,19 +15,10 @@ public class Court {
     private int cost;
     private int penalty;
 
-    public Court(){
+    public Court() {
 
     }
 
-    public Court(int id,String courtName, String userId, Date startDate, Date endDate, int cost, int penalty) {
-        this.id=id;
-        this.courtName = courtName;
-        this.userId = userId;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.cost = cost;
-        this.penalty = penalty;
-    }
 
     public int getId() {
         return id;
@@ -89,10 +78,9 @@ public class Court {
 
     @Override
     public String toString() {
-        if(cost!=0) {
+        if (cost != 0) {
             return TimeFormat.formatDate(startDate) + " " + TimeFormat.formatTime(startDate) + "~" + TimeFormat.formatTime(endDate) + " " + cost + "元";
-        }
-        else {
+        } else {
             return TimeFormat.formatDate(startDate) + " " + TimeFormat.formatTime(startDate) + "~" + TimeFormat.formatTime(endDate) + " 违约金 " + penalty + "元";
 
         }

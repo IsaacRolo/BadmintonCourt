@@ -2,9 +2,7 @@ package pojo;
 
 import java.util.Date;
 
-/**
- * Created by Elrol on 2017/9/9.
- */
+
 public class Cost {
     private int id;
     private int isWeekDay;
@@ -16,13 +14,6 @@ public class Cost {
 
     }
 
-    public Cost(int id, int isWeekDay, Date startTime, Date endTime, int costPerHour) {
-        this.id = id;
-        this.isWeekDay = isWeekDay;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.costPerHour = costPerHour;
-    }
 
     public int getId() {
         return id;

@@ -1,6 +1,7 @@
-package dao;
+package dao.impl;
 
 
+import dao.CostDao;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import pojo.Cost;
@@ -9,10 +10,11 @@ import utils.JdbcUtils;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CostDaoImpl {
+public class CostDaoImpl implements CostDao {
     private QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
 
 
+    @Override
     public List<Cost> getCostByWeek(int isWeekDay) {
         List<Cost> costs = null;
         String sql = "SELECT * FROM cost where isWeekDay=?";
